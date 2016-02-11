@@ -1,10 +1,10 @@
 {
   "name": "clash-of-clans-api",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Clash of Clans API module",
   "main": "dist/index.js",
   "repository": {
-    "type" : "git",
+    "type": "git",
     "url": "https://github.com/CaptEmulation/clash-of-clans-api"
   },
   "author": "CaptEmulation <john.holmes.dean@gmail.com>",
