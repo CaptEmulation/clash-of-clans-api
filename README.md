@@ -40,7 +40,7 @@ client
   .withWarFrequency('always')
   .withMinMembers(25)
   .fetch()
-  .then(response => console.log(resonse))
+  .then(response => console.log(response))
   .catch(err => console.log(err))
 ```
 
@@ -54,7 +54,7 @@ Example:
 ```
 client
   .clanByTag('#UPC2UQ')
-  .then(response => console.log(resonse))
+  .then(response => console.log(response))
   .catch(err => console.log(err));
 ```
 
@@ -66,7 +66,7 @@ Example:
 ```
 client
   .clanMembersByTag('#UPC2UQ')
-  .then(response => console.log(resonse))
+  .then(response => console.log(response))
   .catch(err => console.log(err));
 ```
 
@@ -81,7 +81,7 @@ Examples:
 client
   .locations()
   .fetch()
-  .then(response => console.log(resonse))
+  .then(response => console.log(response))
   .catch(err => console.log(err));
 
 // Request details for a single location
@@ -89,7 +89,7 @@ client
   .locations()
   .withId(locationId)
   .fetch()
-  .then(response => console.log(resonse))
+  .then(response => console.log(response))
   .catch(err => console.log(err));
 
 // Request clan details for a single location
@@ -98,7 +98,7 @@ client
   .withId(locationId)
   .byClan()
   .fetch()
-  .then(response => console.log(resonse))
+  .then(response => console.log(response))
   .catch(err => console.log(err));
 
 // Request player details for a single location
@@ -107,6 +107,6 @@ client
   .withId(locationId)
   .byPlayer()
   .fetch()
-  .then(response => console.log(resonse))
+  .then(response => console.log(response))
   .catch(err => console.log(err));
 ```
