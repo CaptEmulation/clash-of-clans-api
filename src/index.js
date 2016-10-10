@@ -40,6 +40,12 @@ class ClashApi {
     }))
   }
 
+  clanWarlogByTag(tag) {
+    return request(this.requestOptions({
+      uri: `${this.uri}/clans/${encodeURIComponent(tag)}/warlog`,
+    }))
+  }
+
   clans() {
     var qs = {};
 
