@@ -24,9 +24,10 @@ function capitalizeFirstLetter(string) {
 
 var ClashApi = function () {
   function ClashApi() {
-    var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-        uri = _ref.uri,
-        token = _ref.token;
+    var _ref = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+
+    var uri = _ref.uri;
+    var token = _ref.token;
 
     _classCallCheck(this, ClashApi);
 
