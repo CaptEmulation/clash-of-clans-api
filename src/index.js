@@ -51,13 +51,13 @@ class ClashApi {
 
     var dsl = [
       'name',
-      'warFequency',
+      'warFrequency',
       'locationId',
       'minMembers',
       'maxMembers',
       'minClanPoints',
       'minClanLevel',
-      'limit',
+      'limit',  
       'after',
       'before'
     ].reduce((builder, field) => {

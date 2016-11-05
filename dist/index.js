@@ -24,10 +24,9 @@ function capitalizeFirstLetter(string) {
 
 var ClashApi = function () {
   function ClashApi() {
-    var _ref = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-
-    var uri = _ref.uri;
-    var token = _ref.token;
+    var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+        uri = _ref.uri,
+        token = _ref.token;
 
     _classCallCheck(this, ClashApi);
 
@@ -76,7 +75,7 @@ var ClashApi = function () {
     value: function clans() {
       var qs = {};
 
-      var dsl = ['name', 'warFequency', 'locationId', 'minMembers', 'maxMembers', 'minClanPoints', 'minClanLevel', 'limit', 'after', 'before'].reduce(function (builder, field) {
+      var dsl = ['name', 'warFrequency', 'locationId', 'minMembers', 'maxMembers', 'minClanPoints', 'minClanLevel', 'limit', 'after', 'before'].reduce(function (builder, field) {
         builder['with' + capitalizeFirstLetter(field)] = function (input) {
           qs[field] = input;
           return builder;
