@@ -70,6 +70,18 @@ client
   .catch(err => console.log(err));
 ```
 
+## Clan Warlog by Tag
+
+Request clan warlog by clan tag.  Be sure to include the hashtag `#`.
+
+Example:
+```
+client
+  .clanWarlogByTag('#UPC2UQ')
+  .then(response => console.log(resonse))
+  .catch(err => console.log(err));
+```
+
 ## Location
 
 Location has a DSL for requesting location details
