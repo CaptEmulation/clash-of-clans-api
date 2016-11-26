@@ -57,7 +57,7 @@ class ClashApi {
       'maxMembers',
       'minClanPoints',
       'minClanLevel',
-      'limit',  
+      'limit',
       'after',
       'before'
     ].reduce((builder, field) => {
@@ -115,7 +115,7 @@ class ClashApi {
           }
         }, rankingDslMembers);
 
-          return locDsl;
+        return locDsl;
       }.bind(this)
     }
     return dsl;
@@ -125,6 +125,12 @@ class ClashApi {
     return request(this.requestOptions({
       uri: `${this.uri}/leagues`,
     }));
+  }
+
+  playerByTag(tag) {
+    return request(this.requestOptions({
+      uri: `${this.uri}/players/${encodeURIComponent(tag)}`,
+    }))
   }
 }
 
