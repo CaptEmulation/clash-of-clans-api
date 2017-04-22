@@ -46,7 +46,13 @@ class ClashApi {
     }))
   }
 
-  clans() {
+  clanCurrentWarByTag(tag) {
+        return request(this.requestOptions({
+            uri: `${this.uri}/clans/${encodeURIComponent(tag)}/currentwar`,
+        }))
+  }
+
+    clans() {
     var qs = {};
 
     var dsl = [
