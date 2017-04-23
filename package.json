@@ -8,11 +8,17 @@
     "url": "https://github.com/CaptEmulation/clash-of-clans-api"
   },
   "author": "CaptEmulation <john.holmes.dean@gmail.com>",
+  "contributors": [
+    "Taffy IX <taffy.ix@gmail.com>",
+    "Guillaume Delacour <gui@iroqwa.org>",
+    "Fernando Moreno <fermore80@hotmail.com>"
+  ],
   "scripts": {
     "test": "mocha --compilers js:babel-register test/**",
     "test:integration": "mocha --compilers js:babel-register integration/**",
     "build": "babel src -d dist",
-    "build:watch": "npm run build -- -watch"
+    "build:watch": "npm run build -- -watch",
+    "prepublish": "npm run build"
   },
   "license": "MIT",
   "devDependencies": {
