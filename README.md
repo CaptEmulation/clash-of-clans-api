@@ -78,7 +78,19 @@ Example:
 ```
 client
   .clanWarlogByTag('#UPC2UQ')
-  .then(response => console.log(resonse))
+  .then(response => console.log(response))
+  .catch(err => console.log(err));
+```
+
+## Current War by Tag
+
+Request current war infor by clan tag.  Be sure to include the hashtag `#`.
+
+Example:
+```
+client
+  .clanCurrentWarByTag(`#UPC2UQ`)
+  .then(response => console.log(response))
   .catch(err => console.log(err));
 ```
 
