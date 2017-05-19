@@ -27,6 +27,20 @@ let client = clashApi({
 });
 ```
 
+In addition, if you need to pass in any additional options to `request` (for example to set a proxy) then you can use the `request` option to do so:
+
+```
+import clashApi from 'clash-of-clans-api';
+let client = clashApi({
+  request: {
+    proxy: process.env.MY_PROXY,
+  },
+});
+
+See [request options](https://github.com/request/request#requestoptions-callback) for the full list of supported request options
+
+```
+
 ## Clan Search
 
 There is a DSL for performing clan searches.  At least one filtering criteria must be defined and if name is used as part of search, it is required to be at least three characters long.

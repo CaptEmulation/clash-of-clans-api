@@ -1,6 +1,6 @@
 import request from 'request-promise';
 import config from '../config';
-import { assign } from 'lodash';
+import { merge } from 'lodash';
 
 var env = process.env;
 
@@ -9,23 +9,23 @@ function capitalizeFirstLetter(string) {
 }
 
 class ClashApi {
-  constructor({uri, token} = {}) {
+  constructor({uri, token, request} = {}) {
     this.token = token || env.COC_API_TOKEN;
     this.uri = uri || config.uri;
-
+    this.requestDefaults = request || {};
     if (!this.token) {
       throw new Error('Must define a token option or COC_API_TOKEN env variable');
     }
   }
 
   requestOptions(opts) {
-    return assign(opts, {
+    return merge({
       headers: {
         Accept: 'application/json',
         authorization: `Bearer ${this.token}`
       },
       json: true
-    })
+    }, opts, this.requestDefaults);
   }
 
   clanByTag(tag) {
