@@ -36,10 +36,9 @@ let client = clashApi({
     proxy: process.env.MY_PROXY,
   },
 });
+```
 
 See [request options](https://github.com/request/request#requestoptions-callback) for the full list of supported request options
-
-```
 
 ## Clan Search
 
