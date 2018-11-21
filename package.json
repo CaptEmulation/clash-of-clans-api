@@ -32,6 +32,6 @@
   "dependencies": {
     "chokidar": "^1.6.1",
     "lodash": "^4.3.0",
-    "request-promise": "^2.0.0"
+    "request-promise": "2.0.0"
   }
 }
