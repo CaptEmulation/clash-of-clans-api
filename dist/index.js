@@ -26,13 +26,14 @@ var ClashApi = function () {
   function ClashApi() {
     var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
         uri = _ref.uri,
-        token = _ref.token;
+        token = _ref.token,
+        request = _ref.request;
 
     _classCallCheck(this, ClashApi);
 
     this.token = token || env.COC_API_TOKEN;
     this.uri = uri || _config2.default.uri;
-
+    this.requestDefaults = request || {};
     if (!this.token) {
       throw new Error('Must define a token option or COC_API_TOKEN env variable');
     }
@@ -41,13 +42,13 @@ var ClashApi = function () {
   _createClass(ClashApi, [{
     key: 'requestOptions',
     value: function requestOptions(opts) {
-      return (0, _lodash.assign)(opts, {
+      return (0, _lodash.merge)({
         headers: {
           Accept: 'application/json',
           authorization: 'Bearer ' + this.token
         },
         json: true
-      });
+      }, opts, this.requestDefaults);
     }
   }, {
     key: 'clanByTag',
@@ -129,7 +130,7 @@ var ClashApi = function () {
             }
           };
 
-          var rankingDsl = (0, _lodash.assign)({
+          var rankingDsl = assign({
             fetch: function () {
               return (0, _requestPromise2.default)(this.requestOptions({
                 uri: this.uri + '/locations/' + encodeURIComponent(locId) + '/rankings/' + rankId
@@ -137,7 +138,7 @@ var ClashApi = function () {
             }.bind(this)
           }, rankingDslMembers);
 
-          var locDsl = (0, _lodash.assign)({
+          var locDsl = assign({
             fetch: function fetch() {
               return (0, _requestPromise2.default)(this.requestOptions({
                 uri: this.uri + '/locations/' + encodeURIComponent(locId)

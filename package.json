@@ -14,8 +14,8 @@
     "Fernando Moreno <fermore80@hotmail.com>"
   ],
   "scripts": {
-    "test": "mocha --compilers js:babel-register test/**",
-    "test:integration": "mocha --compilers js:babel-register integration/**",
+    "test": "mocha --compilers js:babel-register test",
+    "test:integration": "mocha --compilers js:babel-register integration",
     "build": "babel src -d dist",
     "build:watch": "npm run build -- -watch",
     "prepublish": "npm run build"
@@ -26,7 +26,7 @@
     "babel-preset-es2015": "^6.5.0",
     "babel-register": "^6.5.1",
     "chai": "^3.5.0",
-    "mocha": "^2.4.5",
+    "mocha": "^5.2.0",
     "sinon": "^1.17.3"
   },
   "dependencies": {
