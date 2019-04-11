@@ -86,6 +86,13 @@ var ClashApi = function () {
       }));
     }
   }, {
+    key: 'clanLeagueWars',
+    value: function clanLeagueWars(tag) {
+      return (0, _requestPromise2.default)(this.requestOptions({
+        uri: this.url + '/clanwarleagues/wars/' + encodeURIComponent(tag)
+      }));
+    }
+  }, {
     key: 'clans',
     value: function clans() {
       var qs = {};

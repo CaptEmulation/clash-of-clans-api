@@ -97,7 +97,7 @@ client
 
 ## Current War by Tag
 
-Request current war infor by clan tag.  Be sure to include the hashtag `#`.
+Request current war information by clan tag.  Be sure to include the hashtag `#`.
 
 Example:
 ```
@@ -106,6 +106,25 @@ client
   .then(response => console.log(response))
   .catch(err => console.log(err));
 ```
+
+## Clan War Leagues support
+
+Request the current clan war leagues the clan is participating in.
+
+Example:
+```
+client
+  .clanLeague(`#UPC2UQ`)
+  .then(response => console.log(response))
+  .catch(err => console.log(err));
+  
+// Response contains response.rounds[].warTags[]. Each of the warTags 
+// can be used to retrieve further information about the league war.
+client
+  .clanLeagueWars(response.rounds[0].warTags[0])
+  .then(response => console.log(response))
+  .catch(err => console.log(err));
+``` 
 
 ## Location
 
