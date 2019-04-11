@@ -1,6 +1,6 @@
 {
   "name": "clash-of-clans-api",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Clash of Clans API module",
   "main": "dist/index.js",
   "repository": {
