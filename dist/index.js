@@ -22,6 +22,17 @@ function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+/**
+ * ClashApi - Provides an easy way to get started with the Clash of Clans API.
+ *
+ * All fetches return a promise using
+ *
+ * @example
+ * let client = clashApi({
+ *    token: yourApiToken // Optional, can also use COC_API_TOKEN env variable
+ * });
+ */
+
 var ClashApi = function () {
   function ClashApi() {
     var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
@@ -31,9 +42,12 @@ var ClashApi = function () {
 
     _classCallCheck(this, ClashApi);
 
+    /**
+     * Personal Clash of Clans API token.
+     */
     this.token = token || env.COC_API_TOKEN;
     this.uri = uri || _config2.default.uri;
-    this.requestDefaults = request || {};
+    this._requestDefaults = request || {};
     if (!this.token) {
       throw new Error('Must define a token option or COC_API_TOKEN env variable');
     }
@@ -48,8 +62,21 @@ var ClashApi = function () {
           authorization: 'Bearer ' + this.token
         },
         json: true
-      }, opts, this.requestDefaults);
+      }, opts, this._requestDefaults);
     }
+
+    /**
+     * Get information about a single clan by clan tag. Clan tags can be found using clan search operation.
+     *
+     * @example
+     * client
+     *    .clanByTag('#UPC2UQ')
+     *    .then(response => console.log(response))
+     *    .catch(err => console.log(err));
+     *
+     * @param {string} tag - Tag of the clan to retrieve.
+     */
+
   }, {
     key: 'clanByTag',
     value: function clanByTag(tag) {
@@ -57,6 +84,19 @@ var ClashApi = function () {
         uri: this.uri + '/clans/' + encodeURIComponent(tag)
       }));
     }
+
+    /**
+     * List clan members.
+     *
+     * @example
+     * client
+     *    .clanMembersByTag('#UPC2UQ')
+     *    .then(response => console.log(response))
+     *    .catch(err => console.log(err));
+     *
+     * @param {string} tag - Tag of the clan whose members to retrieve.
+     */
+
   }, {
     key: 'clanMembersByTag',
     value: function clanMembersByTag(tag) {
@@ -64,6 +104,19 @@ var ClashApi = function () {
         uri: this.uri + '/clans/' + encodeURIComponent(tag) + '/members'
       }));
     }
+
+    /**
+     * Retrieve clan's clan war log.
+     *
+     * @example
+     * client
+     *    .clanWarlogByTag('#UPC2UQ')
+     *    .then(response => console.log(response))
+     *    .catch(err => console.log(err));
+     *
+     * @param {string} tag - Tag of the clan whose war log to retrieve.
+     */
+
   }, {
     key: 'clanWarlogByTag',
     value: function clanWarlogByTag(tag) {
@@ -71,6 +124,19 @@ var ClashApi = function () {
         uri: this.uri + '/clans/' + encodeURIComponent(tag) + '/warlog'
       }));
     }
+
+    /**
+     * Retrieve information about clan's current clan war.
+     *
+     * @example
+     * client
+     *    .clanCurrentWarByTag(`#UPC2UQ`)
+     *    .then(response => console.log(response))
+     *    .catch(err => console.log(err));
+     *
+     * @param {string} tag - Tag of the clan whose current clan war information to retrieve.
+     */
+
   }, {
     key: 'clanCurrentWarByTag',
     value: function clanCurrentWarByTag(tag) {
@@ -78,6 +144,13 @@ var ClashApi = function () {
         uri: this.uri + '/clans/' + encodeURIComponent(tag) + '/currentwar'
       }));
     }
+
+    /**
+     * Retrieve information about clan's current clan war league group.
+     *
+     * @param {string} tag - Tag of the clan whose current clan war league group to retrieve.
+     */
+
   }, {
     key: 'clanLeague',
     value: function clanLeague(tag) {
@@ -92,6 +165,27 @@ var ClashApi = function () {
         uri: this.url + '/clanwarleagues/wars/' + encodeURIComponent(tag)
       }));
     }
+
+    /**
+     * Search all clans by name and/or filtering the results using various criteria.
+     * At least one filtering criteria must be defined and if name is used as part of search,
+     * it is required to be at least three characters long.
+     *
+     * It is not possible to specify ordering for results so clients should not rely on any
+     * specific ordering as that may change in the future releases of the API.
+     *
+     * @example
+     * client
+     *    .clans()
+     *    .withWarFrequency('always')
+     *    .withMinMembers(25)
+     *    .fetch()
+     *    .then(response => console.log(response))
+     *    .catch(err => console.log(err))
+     *
+     * @see https://developer.clashofclans.com/api-docs/index.html#!/clans/searchClans
+     */
+
   }, {
     key: 'clans',
     value: function clans() {
@@ -114,6 +208,20 @@ var ClashApi = function () {
 
       return dsl;
     }
+
+    /**
+     * List all available locations.
+     *
+     * @example
+     * client
+     *    .locations()
+     *    .withId(locationId)
+     *    .byPlayer()
+     *    .fetch()
+     *    .then(response => console.log(response))
+     *    .catch(err => console.log(err));
+     */
+
   }, {
     key: 'locations',
     value: function locations() {
@@ -124,7 +232,7 @@ var ClashApi = function () {
           }));
         }.bind(this),
         withId: function (locId) {
-          var rankId;
+          var rankId = void 0;
 
           var rankingDslMembers = {
             byClan: function byClan() {
@@ -158,6 +266,11 @@ var ClashApi = function () {
       };
       return dsl;
     }
+
+    /**
+     * Get list of leagues.
+     */
+
   }, {
     key: 'leagues',
     value: function leagues() {
@@ -165,6 +278,11 @@ var ClashApi = function () {
         uri: this.uri + '/leagues'
       }));
     }
+
+    /**
+     * Get information about a single player by player tag. Player tags can be found either in game or by from clan member lists.
+     */
+
   }, {
     key: 'playerByTag',
     value: function playerByTag(tag) {
