@@ -60,7 +60,7 @@ class ClashApi {
 
   clanLeagueWars(tag) {
         return request(this.requestOptions({
-            uri: `${this.url}/clanwarleagues/wars/${encodeURIComponent(tag)}`,
+            uri: `${this.uri}/clanwarleagues/wars/${encodeURIComponent(tag)}`,
         }))
   }
 
