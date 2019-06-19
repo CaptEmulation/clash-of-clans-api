@@ -1,27 +1,24 @@
-'use strict';
+"use strict";
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _requestPromise = _interopRequireDefault(require("request-promise"));
 
-var _requestPromise = require('request-promise');
+var _config = _interopRequireDefault(require("../config"));
 
-var _requestPromise2 = _interopRequireDefault(_requestPromise);
+var _lodash = require("lodash");
 
-var _config = require('../config');
-
-var _config2 = _interopRequireDefault(_config);
-
-var _lodash = require('lodash');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 var env = process.env;
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
-
 /**
  * ClashApi - Provides an easy way to get started with the Clash of Clans API.
  *
@@ -33,7 +30,10 @@ function capitalizeFirstLetter(string) {
  * });
  */
 
-var ClashApi = function () {
+
+var ClashApi =
+/*#__PURE__*/
+function () {
   function ClashApi() {
     var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
         uri = _ref.uri,
@@ -46,25 +46,25 @@ var ClashApi = function () {
      * Personal Clash of Clans API token.
      */
     this.token = token || env.COC_API_TOKEN;
-    this.uri = uri || _config2.default.uri;
+    this.uri = uri || _config["default"].uri;
     this._requestDefaults = request || {};
+
     if (!this.token) {
       throw new Error('Must define a token option or COC_API_TOKEN env variable');
     }
   }
 
   _createClass(ClashApi, [{
-    key: 'requestOptions',
+    key: "requestOptions",
     value: function requestOptions(opts) {
       return (0, _lodash.merge)({
         headers: {
           Accept: 'application/json',
-          authorization: 'Bearer ' + this.token
+          authorization: "Bearer ".concat(this.token)
         },
         json: true
       }, opts, this._requestDefaults);
     }
-
     /**
      * Get information about a single clan by clan tag. Clan tags can be found using clan search operation.
      *
@@ -78,13 +78,12 @@ var ClashApi = function () {
      */
 
   }, {
-    key: 'clanByTag',
+    key: "clanByTag",
     value: function clanByTag(tag) {
-      return (0, _requestPromise2.default)(this.requestOptions({
-        uri: this.uri + '/clans/' + encodeURIComponent(tag)
+      return (0, _requestPromise["default"])(this.requestOptions({
+        uri: "".concat(this.uri, "/clans/").concat(encodeURIComponent(tag))
       }));
     }
-
     /**
      * List clan members.
      *
@@ -98,13 +97,12 @@ var ClashApi = function () {
      */
 
   }, {
-    key: 'clanMembersByTag',
+    key: "clanMembersByTag",
     value: function clanMembersByTag(tag) {
-      return (0, _requestPromise2.default)(this.requestOptions({
-        uri: this.uri + '/clans/' + encodeURIComponent(tag) + '/members'
+      return (0, _requestPromise["default"])(this.requestOptions({
+        uri: "".concat(this.uri, "/clans/").concat(encodeURIComponent(tag), "/members")
       }));
     }
-
     /**
      * Retrieve clan's clan war log.
      *
@@ -118,13 +116,12 @@ var ClashApi = function () {
      */
 
   }, {
-    key: 'clanWarlogByTag',
+    key: "clanWarlogByTag",
     value: function clanWarlogByTag(tag) {
-      return (0, _requestPromise2.default)(this.requestOptions({
-        uri: this.uri + '/clans/' + encodeURIComponent(tag) + '/warlog'
+      return (0, _requestPromise["default"])(this.requestOptions({
+        uri: "".concat(this.uri, "/clans/").concat(encodeURIComponent(tag), "/warlog")
       }));
     }
-
     /**
      * Retrieve information about clan's current clan war.
      *
@@ -138,13 +135,12 @@ var ClashApi = function () {
      */
 
   }, {
-    key: 'clanCurrentWarByTag',
+    key: "clanCurrentWarByTag",
     value: function clanCurrentWarByTag(tag) {
-      return (0, _requestPromise2.default)(this.requestOptions({
-        uri: this.uri + '/clans/' + encodeURIComponent(tag) + '/currentwar'
+      return (0, _requestPromise["default"])(this.requestOptions({
+        uri: "".concat(this.uri, "/clans/").concat(encodeURIComponent(tag), "/currentwar")
       }));
     }
-
     /**
      * Retrieve information about clan's current clan war league group.
      *
@@ -152,20 +148,19 @@ var ClashApi = function () {
      */
 
   }, {
-    key: 'clanLeague',
+    key: "clanLeague",
     value: function clanLeague(tag) {
-      return (0, _requestPromise2.default)(this.requestOptions({
-        uri: this.uri + '/clans/' + encodeURIComponent(tag) + '/currentwar/leaguegroup'
+      return (0, _requestPromise["default"])(this.requestOptions({
+        uri: "".concat(this.uri, "/clans/").concat(encodeURIComponent(tag), "/currentwar/leaguegroup")
       }));
     }
   }, {
-    key: 'clanLeagueWars',
+    key: "clanLeagueWars",
     value: function clanLeagueWars(tag) {
-      return (0, _requestPromise2.default)(this.requestOptions({
-        uri: this.uri + '/clanwarleagues/wars/' + encodeURIComponent(tag)
+      return (0, _requestPromise["default"])(this.requestOptions({
+        uri: "".concat(this.uri, "/clanwarleagues/wars/").concat(encodeURIComponent(tag))
       }));
     }
-
     /**
      * Search all clans by name and/or filtering the results using various criteria.
      * At least one filtering criteria must be defined and if name is used as part of search,
@@ -187,28 +182,26 @@ var ClashApi = function () {
      */
 
   }, {
-    key: 'clans',
+    key: "clans",
     value: function clans() {
       var qs = {};
-
       var dsl = ['name', 'warFrequency', 'locationId', 'minMembers', 'maxMembers', 'minClanPoints', 'minClanLevel', 'limit', 'after', 'before'].reduce(function (builder, field) {
-        builder['with' + capitalizeFirstLetter(field)] = function (input) {
+        builder["with".concat(capitalizeFirstLetter(field))] = function (input) {
           qs[field] = input;
           return builder;
         };
+
         return builder;
       }, {
         fetch: function () {
-          return (0, _requestPromise2.default)(this.requestOptions({
+          return (0, _requestPromise["default"])(this.requestOptions({
             qs: qs,
-            uri: this.uri + '/clans'
+            uri: "".concat(this.uri, "/clans")
           }));
         }.bind(this)
       });
-
       return dsl;
     }
-
     /**
      * List all available locations.
      *
@@ -223,17 +216,16 @@ var ClashApi = function () {
      */
 
   }, {
-    key: 'locations',
+    key: "locations",
     value: function locations() {
       var dsl = {
         fetch: function () {
-          return (0, _requestPromise2.default)(this.requestOptions({
-            uri: this.uri + '/locations'
+          return (0, _requestPromise["default"])(this.requestOptions({
+            uri: "".concat(this.uri, "/locations")
           }));
         }.bind(this),
         withId: function (locId) {
-          var rankId = void 0;
-
+          var rankId;
           var rankingDslMembers = {
             byClan: function byClan() {
               rankId = 'clans';
@@ -244,50 +236,45 @@ var ClashApi = function () {
               return rankingDsl;
             }
           };
-
           var rankingDsl = assign({
             fetch: function () {
-              return (0, _requestPromise2.default)(this.requestOptions({
-                uri: this.uri + '/locations/' + encodeURIComponent(locId) + '/rankings/' + rankId
+              return (0, _requestPromise["default"])(this.requestOptions({
+                uri: "".concat(this.uri, "/locations/").concat(encodeURIComponent(locId), "/rankings/").concat(rankId)
               }));
             }.bind(this)
           }, rankingDslMembers);
-
           var locDsl = assign({
             fetch: function fetch() {
-              return (0, _requestPromise2.default)(this.requestOptions({
-                uri: this.uri + '/locations/' + encodeURIComponent(locId)
+              return (0, _requestPromise["default"])(this.requestOptions({
+                uri: "".concat(this.uri, "/locations/").concat(encodeURIComponent(locId))
               }));
             }
           }, rankingDslMembers);
-
           return locDsl;
         }.bind(this)
       };
       return dsl;
     }
-
     /**
      * Get list of leagues.
      */
 
   }, {
-    key: 'leagues',
+    key: "leagues",
     value: function leagues() {
-      return (0, _requestPromise2.default)(this.requestOptions({
-        uri: this.uri + '/leagues'
+      return (0, _requestPromise["default"])(this.requestOptions({
+        uri: "".concat(this.uri, "/leagues")
       }));
     }
-
     /**
      * Get information about a single player by player tag. Player tags can be found either in game or by from clan member lists.
      */
 
   }, {
-    key: 'playerByTag',
+    key: "playerByTag",
     value: function playerByTag(tag) {
-      return (0, _requestPromise2.default)(this.requestOptions({
-        uri: this.uri + '/players/' + encodeURIComponent(tag)
+      return (0, _requestPromise["default"])(this.requestOptions({
+        uri: "".concat(this.uri, "/players/").concat(encodeURIComponent(tag))
       }));
     }
   }]);
@@ -300,5 +287,4 @@ var factory = function factory(config) {
 };
 
 factory.ClashApi = ClashApi;
-
 module.exports = factory;
