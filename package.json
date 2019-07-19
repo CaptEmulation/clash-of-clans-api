@@ -18,7 +18,7 @@
     "test:integration": "mocha --compilers js:@babel/register integration",
     "build": "babel src -d dist",
     "build:watch": "npm run build -- -watch",
-    "prepublish": "npm run build"
+    "prepublishOnly": "npm run build"
   },
   "license": "MIT",
   "devDependencies": {
@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "chokidar": "^3.0.1",
-    "lodash": "^4.3.0",
+    "lodash": "^4.17.15",
     "request-promise": "^2.0.0"
   }
 }
