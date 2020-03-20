@@ -22,10 +22,10 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
+    "@babel/cli": "^7.8.4",
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
-    "@babel/register": "^7.4.4",
+    "@babel/register": "^7.8.6",
     "chai": "^3.5.0",
     "mocha": "^5.2.0",
     "sinon": "^1.17.3"
@@ -33,6 +33,7 @@
   "dependencies": {
     "chokidar": "^3.0.1",
     "lodash": "^4.17.15",
+    "request": "^2.88.2",
     "request-promise": "^2.0.0"
   }
 }
