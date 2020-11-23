@@ -5,7 +5,7 @@ import { merge } from 'lodash';
 const env = process.env;
 
 function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
+  return string.charAt(0).toUpperCase() + string.substr(1);
 }
 
 /**
