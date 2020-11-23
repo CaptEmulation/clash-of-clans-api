@@ -166,3 +166,6 @@ client
   .then(response => console.log(response))
   .catch(err => console.log(err));
 ```
+
+## Tutorial for complete beginners
+https://medium.com/@alexionutale/how-to-use-clash-of-clans-api-cd4fe7406576?source=friends_link&sk=c12a0c2a736658681878f20cc98af08f
