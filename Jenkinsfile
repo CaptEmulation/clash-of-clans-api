@@ -33,6 +33,7 @@ pipeline {
     stage("Build") {
       steps {
           sh """
+          npm i -g yarn
           yarn
           yarn build
           """
