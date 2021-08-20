@@ -32,11 +32,12 @@ pipeline {
     }
     stage("Build") {
       steps {
+        container("node") {
           sh """
-          npm i -g yarn
           yarn
           yarn build
           """
+        }
       }
     }
   }
