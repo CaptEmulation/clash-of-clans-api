@@ -1,11 +1,9 @@
-// NOTE: this is an auto-generated file from ci/templates/build.Jenkinsfile
-
 String REF = "${params.repo_commit}"
 
 pipeline {
   agent {
     kubernetes {
-      label "build-" + + UUID.randomUUID().toString()
+      label "build-" + UUID.randomUUID().toString()
       yaml """
         apiVersion: v1
         kind: Pod
