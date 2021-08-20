@@ -1,4 +1,3 @@
-String REF = "${params.repo_branch}"
 
 pipeline {
   agent {
@@ -22,16 +21,8 @@ pipeline {
     stage("Pull repo") {
       steps {
           checkout([$class: "GitSCM",
-            branches: [[name: "${REF}" ]],
+            branches: [[name: "${params.repo_branch}" ]],
             doGenerateSubmoduleConfigurations: false,
-            extensions: [
-              [$class: "SubmoduleOption",
-                          disableSubmodules: false,
-                          recursiveSubmodules: true,
-                          parentCredentials: true],
-              [$class: "CleanBeforeCheckout",
-                deleteUntrackedNestedRepositories: true]
-            ],
             userRemoteConfigs: [[
               credentialsId: "github-ssh",
               url: "git@github.com:CaptEmulation/clash-of-clans-api.git"
@@ -42,7 +33,7 @@ pipeline {
     stage("Build") {
       steps {
           sh """
-          yarn install
+          yarn
           yarn build
           """
       }
