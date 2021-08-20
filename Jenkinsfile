@@ -3,6 +3,7 @@ String REF = "${params.repo_commit}"
 pipeline {
   agent {
     kubernetes {
+      label "build"
       yaml """
         apiVersion: v1
         kind: Pod
