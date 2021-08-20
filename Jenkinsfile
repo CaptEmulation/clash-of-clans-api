@@ -1,4 +1,4 @@
-String REF = "${params.repo_commit}"
+String REF = "${params.repo_branch}"
 
 pipeline {
   agent {
