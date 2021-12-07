@@ -40,5 +40,15 @@ pipeline {
         }
       }
     }
+    stage("Test") {
+      steps {
+        container("node") {
+          sh """
+          yarn
+          yarn test
+          """
+        }
+      }
+    }
   }
 }
