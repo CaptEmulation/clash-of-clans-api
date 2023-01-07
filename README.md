@@ -20,7 +20,7 @@ Once you get your token, you have two choices.
 
 Example:
 
-```
+```js
 import clashApi from 'clash-of-clans-api';
 let client = clashApi({
   token: yourApiToken // Optional, can also use COC_API_TOKEN env variable
@@ -29,7 +29,7 @@ let client = clashApi({
 
 In addition, if you need to pass in any additional options to `request` (for example to set a proxy) then you can use the `request` option to do so:
 
-```
+```js
 import clashApi from 'clash-of-clans-api';
 let client = clashApi({
   request: {
@@ -47,7 +47,7 @@ There is a DSL for performing clan searches.  At least one filtering criteria mu
 See https://developer.clashofclans.com/api-docs/index.html#!/clans/searchClans
 
 Example:
-```
+```js
 client
   .clans()
   .withWarFrequency('always')
@@ -64,7 +64,7 @@ All query parameters are supported, simply prepend `with` and capitalize the fir
 Request clan details by clan tag.  Be sure to include the hashtag `#`.
 
 Example:
-```
+```js
 client
   .clanByTag('#UPC2UQ')
   .then(response => console.log(response))
@@ -76,7 +76,7 @@ client
 Request clan member details by clan tag.  Be sure to include the hashtag `#`.
 
 Example:
-```
+```js
 client
   .clanMembersByTag('#UPC2UQ')
   .then(response => console.log(response))
@@ -88,7 +88,7 @@ client
 Request clan warlog by clan tag.  Be sure to include the hashtag `#`.
 
 Example:
-```
+```js
 client
   .clanWarlogByTag('#UPC2UQ')
   .then(response => console.log(response))
@@ -100,7 +100,7 @@ client
 Request current war information by clan tag.  Be sure to include the hashtag `#`.
 
 Example:
-```
+```js
 client
   .clanCurrentWarByTag(`#UPC2UQ`)
   .then(response => console.log(response))
@@ -112,7 +112,7 @@ client
 Request the current clan war leagues the clan is participating in.
 
 Example:
-```
+```js
 client
   .clanLeague(`#UPC2UQ`)
   .then(response => console.log(response))
@@ -132,7 +132,7 @@ Location has a DSL for requesting location details
 
 Examples:
 
-```
+```js
 // Request all location details
 client
   .locations()
